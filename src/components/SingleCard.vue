@@ -4,7 +4,8 @@
         <div class="card-body">
             <h5 class="card-title">{{element.name}}</h5>
             <p class="card-text">{{element.description}}</p>
-            <router-link :to="'/'" class="btn btn-primary">Dettagli</router-link>
+            <router-link :to="'/projects/' + element.id" class="btn btn-primary">Dettagli</router-link>
+            <router-link to="/" class="btn btn-secondary ms-3">Home Page</router-link>
         </div>
     </div>
 </template>

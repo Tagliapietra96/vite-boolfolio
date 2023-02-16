@@ -1,41 +1,37 @@
 <template>
     <AppHeader/>
     <section class="mt-5">
+
         <div class="container">
-            <div class="row">
-
-                <div v-for="element in projects" class="col-3">
-                    <SingleCard :backUrl="backUrl" :element="element"/>
-                </div>
-
-            </div>
+            <SingleCard :backUrl="backUrl" :element="project"/>
         </div>
-    </section>    
-    
+
+    </section>
 </template>
 
 <script>
 import AppHeader from '../../components/AppHeader.vue';
 import axios from "axios";
 import SingleCard from '../../components/SingleCard.vue';
+
+
 export default {
     components: { AppHeader, SingleCard },
-    name: "ProjectsIndex",
     data(){
         return{
             backUrl: "http://127.0.0.1:8000",
-            projects: []
+            project: {}
         }
     },
     methods: {
-        fetchProjects(){
-            axios.get(this.backUrl + "/api/projects").then((resp) => {
-                this.projects = resp.data.data;
+        fetchProject(){
+            axios.get(this.backUrl + "/api/projects/" + this.$route.params.id).then((resp) => {
+                this.project = resp.data;
             })
         }
     },
     mounted() {
-        this.fetchProjects();
+        this.fetchProject();
     },
 }
 </script>
