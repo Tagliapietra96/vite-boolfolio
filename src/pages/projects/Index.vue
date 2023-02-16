@@ -1,11 +1,11 @@
 <template>
     <AppHeader/>
-    <section>
+    <section class="mt-5">
         <div class="container">
             <div class="row">
 
                 <div v-for="element in projects" class="col-3">
-                    <h1>ciao</h1>
+                    <SingleCard :backUrl="backUrl" :element="element"/>
                 </div>
 
             </div>
@@ -17,8 +17,9 @@
 <script>
 import AppHeader from '../../components/AppHeader.vue';
 import axios from "axios";
+import SingleCard from '../../components/SingleCard.vue';
 export default {
-    components: { AppHeader },
+    components: { AppHeader, SingleCard },
     name: "ProjectsIndex",
     data(){
         return{
